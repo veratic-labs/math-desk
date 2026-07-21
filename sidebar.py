@@ -9,32 +9,28 @@ class Sidebar(ctk.CTkFrame):
         self.title_label.pack(pady=(30, 25))
 
         # Sidebar buttons
-        self.basic_button = ctk.CTkButton(self, text="Basic Calculator", fg_color="transparent",
-            command=lambda: self.select_button(self.basic_button))
+        self.basic_button = ctk.CTkButton(self, text="Basic Calculator", fg_color="#1f6aa5",
+            command=lambda: master.change_page(master.basic, self.basic_button))
         self.basic_button.pack(padx=20, pady=5)
 
         self.function_button = ctk.CTkButton(self, text="Function Plot", fg_color="transparent",
-            command=lambda: self.select_button(self.function_button))
+            command=lambda: master.change_page(master.function, self.function_button))
         self.function_button.pack(padx=20, pady=5)
 
-        self.chart_button = ctk.CTkButton(self, text="Data Charts", fg_color="transparent",
-            command=lambda: self.select_button(self.chart_button))
-        self.chart_button.pack(padx=20, pady=5)
-
         self.calculus_button = ctk.CTkButton(self, text="Calculus", fg_color="transparent",
-            command=lambda: self.select_button(self.calculus_button))
+            command=lambda: master.change_page(master.calculus, self.calculus_button))
         self.calculus_button.pack(padx=20, pady=5)
 
         self.numerical_button = ctk.CTkButton(self,text="Numerical Methods", fg_color="transparent",
-            command=lambda: self.select_button(self.numerical_button))
+            command=lambda: master.change_page(master.numerical, self.numerical_button))
         self.numerical_button.pack(padx=20, pady=5)
 
         self.matrix_button = ctk.CTkButton(self, text="Matrix", fg_color="transparent",
-            command=lambda: self.select_button(self.matrix_button))
+            command=lambda: self.select_button(master.matrix, self.matrix_button))
         self.matrix_button.pack(padx=20, pady=5)
 
-    def select_button(self, selected_button):
-        buttons = [
+    def change_button_color(self, selected_button):
+        self.buttons = [
             self.basic_button,
             self.function_button,
             self.chart_button,
@@ -42,8 +38,9 @@ class Sidebar(ctk.CTkFrame):
             self.numerical_button,
             self.matrix_button
         ]
-
-        for button in buttons:
+        
+        for button in self.buttons:
             button.configure(fg_color="transparent")
 
         selected_button.configure(fg_color="#1f6aa5")
+

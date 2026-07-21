@@ -25,7 +25,7 @@ class BasicCalculator(ctk.CTkFrame):
         self.title_label.pack(anchor="w", padx=20, pady=(20, 10))
 
         #input area
-        self.input_box = ctk.CTkEntry(self, placeholder_text="Enter a Python expression...")
+        self.input_box = ctk.CTkEntry(self, placeholder_text="Enter an expression...")
         self.input_box.pack(fill="x", padx=20, pady=(20, 10))
 
         #calculate button
