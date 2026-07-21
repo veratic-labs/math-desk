@@ -33,7 +33,6 @@ class Sidebar(ctk.CTkFrame):
         self.buttons = [
             self.basic_button,
             self.function_button,
-            self.chart_button,
             self.calculus_button,
             self.numerical_button,
             self.matrix_button

@@ -33,11 +33,11 @@ class BasicCalculator(ctk.CTkFrame):
         self.calculate_button.pack(anchor="w", padx=20, pady=(0, 20))
 
         #result title
-        self.result_title = ctk.CTkLabel(self, text="Result", font=ctk.CTkFont(size=18, weight="bold"))
-        self.result_title.pack(anchor="w", padx=20, pady=(20, 10))
+        self.result_title = ctk.CTkLabel(self, text="Result", font=ctk.CTkFont(size=16, weight="bold"))
+        self.result_title.pack(anchor="w", padx=20, pady=(15, 5))
 
         #result label
-        self.result_label = ctk.CTkLabel(self, text="", anchor="w", font=ctk.CTkFont(size=24, weight="bold"))
+        self.result_label = ctk.CTkLabel(self, text="", anchor="w", font=ctk.CTkFont(size=16, weight="bold"))
         self.result_label.pack(fill="x", padx=20)
 
     def calculate(self):
@@ -48,7 +48,7 @@ class BasicCalculator(ctk.CTkFrame):
             self.result_label.configure(text=str(result))
         
         except Exception:
-            self.result_label.configure(text="Error")
+            self.result_label.configure(text="Invalid input")
 
     def evaluate_expression(self, expression):
         return eval(expression, SAFE_GLOBALS, {})

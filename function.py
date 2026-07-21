@@ -43,11 +43,16 @@ class FunctionPlot(ctk.CTkFrame):
         #plot button
         self.plot_button = ctk.CTkButton(self, text="Plot", width=120, command=self.plot_function)
         self.plot_button.pack(anchor="w", padx=20, pady=(20, 10))
+
+        #warning label
+        self.warning = ctk.CTkLabel(self, text="Invalid Input", font=ctk.CTkFont(size=16))
     
     def plot_function(self):
+        self.warning.pack_forget()
+        
         points_num = 1000
 
-        #enable users to enter special values
+        #enable users to enter special values for x min and max
         safe_globals = {
             "__builtins__": {},
             "sin": np.sin,
@@ -61,12 +66,14 @@ class FunctionPlot(ctk.CTkFrame):
             "exp": np.exp,
         }
         
+        #get values
         function = self.function_entry.get()
         x_min = eval(self.xmin_entry.get(), safe_globals, {})
         x_max = eval(self.xmax_entry.get(), safe_globals, {})
 
         x = np.linspace(x_min, x_max, points_num)
 
+        #safe globals for functions
         safe_globals = {
             "__builtins__": {},
             "x": x,
@@ -82,11 +89,13 @@ class FunctionPlot(ctk.CTkFrame):
             "abs": abs,
             "round": round,
         }
-
+        
+        #draw the graph
         try:
             y = eval(function, safe_globals, {})
             plt.plot(x, y)
             
+            #adjust axis
             ax = plt.gca()
             ax.spines["left"].set_position("zero")
             ax.spines["bottom"].set_position("zero")
@@ -101,4 +110,4 @@ class FunctionPlot(ctk.CTkFrame):
             plt.show()
         
         except Exception:
-            pass
+            self.warning.pack(fill="x", padx=20)
