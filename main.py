@@ -4,6 +4,7 @@ from sidebar import Sidebar
 from basic import BasicCalculator
 from function import FunctionPlot
 from calculus import Calculus
+from solve import SolveEquation
 
 class MathDesk(ctk.CTk):
     def __init__(self):
@@ -18,6 +19,7 @@ class MathDesk(ctk.CTk):
         self.basic = BasicCalculator(self)
         self.function = FunctionPlot(self)
         self.calculus = Calculus(self)
+        self.solve = SolveEquation(self)
 
         #show pages
         self.sidebar.pack(side="left", fill="y")
@@ -27,6 +29,7 @@ class MathDesk(ctk.CTk):
         self.basic.pack_forget()
         self.function.pack_forget()
         self.calculus.pack_forget()
+        self.solve.pack_forget()
 
         page.pack(side="left", fill="both", expand=True)
 

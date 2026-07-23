@@ -21,21 +21,16 @@ class Sidebar(ctk.CTkFrame):
             command=lambda: master.change_page(master.calculus, self.calculus_button))
         self.calculus_button.pack(padx=20, pady=5)
 
-        self.numerical_button = ctk.CTkButton(self,text="Numerical Methods", fg_color="transparent",
-            command=lambda: master.change_page(master.numerical, self.numerical_button))
-        self.numerical_button.pack(padx=20, pady=5)
-
-        self.matrix_button = ctk.CTkButton(self, text="Matrix", fg_color="transparent",
-            command=lambda: self.select_button(master.matrix, self.matrix_button))
-        self.matrix_button.pack(padx=20, pady=5)
+        self.solve_button = ctk.CTkButton(self,text="Solve Equation", fg_color="transparent",
+            command=lambda: master.change_page(master.solve, self.solve_button))
+        self.solve_button.pack(padx=20, pady=5)
 
     def change_button_color(self, selected_button):
         self.buttons = [
             self.basic_button,
             self.function_button,
             self.calculus_button,
-            self.numerical_button,
-            self.matrix_button
+            self.solve_button,
         ]
         
         for button in self.buttons:

@@ -19,7 +19,7 @@ class Calculus(ctk.CTkFrame):
                 "Derivative at Point"
                 ], 
             width=150, 
-            height=16, 
+            height=25, 
             font=ctk.CTkFont(size=14), 
             dropdown_font=ctk.CTkFont(size=14),
             command=self.change_operation
