@@ -10,20 +10,25 @@ class Sidebar(ctk.CTkFrame):
 
         # Sidebar buttons
         self.basic_button = ctk.CTkButton(self, text="Basic Calculator", fg_color="#1f6aa5",
-            command=lambda: master.change_page(master.basic, self.basic_button))
+            command=lambda: master.change_page(master.basic, self.basic_button), text_color="white")
         self.basic_button.pack(padx=20, pady=5)
 
         self.function_button = ctk.CTkButton(self, text="Function Plot", fg_color="transparent",
-            command=lambda: master.change_page(master.function, self.function_button))
+            command=lambda: master.change_page(master.function, self.function_button), text_color=("black", "white"))
         self.function_button.pack(padx=20, pady=5)
 
         self.calculus_button = ctk.CTkButton(self, text="Calculus", fg_color="transparent",
-            command=lambda: master.change_page(master.calculus, self.calculus_button))
+            command=lambda: master.change_page(master.calculus, self.calculus_button), text_color=("black", "white"))
         self.calculus_button.pack(padx=20, pady=5)
 
         self.solve_button = ctk.CTkButton(self,text="Solve Equation", fg_color="transparent",
-            command=lambda: master.change_page(master.solve, self.solve_button))
+            command=lambda: master.change_page(master.solve, self.solve_button), text_color=("black", "white"))
         self.solve_button.pack(padx=20, pady=5)
+
+        #theme settings
+        self.theme_menu = ctk.CTkOptionMenu(self, values=["System", "Light", "Dark"], command=self.change_theme)
+        self.theme_menu.set("System")
+        self.theme_menu.pack(side="bottom", padx=20, pady=20)
 
     def change_button_color(self, selected_button):
         self.buttons = [
@@ -34,7 +39,10 @@ class Sidebar(ctk.CTkFrame):
         ]
         
         for button in self.buttons:
-            button.configure(fg_color="transparent")
+            button.configure(fg_color="transparent", text_color=("black", "white"))
 
-        selected_button.configure(fg_color="#1f6aa5")
+        selected_button.configure(fg_color="#1f6aa5", text_color="white")
+
+    def change_theme(self, selected_theme):
+        ctk.set_appearance_mode(selected_theme)
 

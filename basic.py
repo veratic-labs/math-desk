@@ -37,7 +37,7 @@ class BasicCalculator(ctk.CTkFrame):
         self.result_title.pack(anchor="w", padx=20, pady=(15, 5))
 
         #result label
-        self.result_label = ctk.CTkLabel(self, text="", anchor="w", font=ctk.CTkFont(size=16, weight="bold"))
+        self.result_label = ctk.CTkLabel(self, text="", anchor="w")
         self.result_label.pack(fill="x", padx=20)
 
     def calculate(self):

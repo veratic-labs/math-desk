@@ -74,7 +74,7 @@ class SolveEquation(ctk.CTkFrame):
 
             if self.mode == "Symbolic":
                 solutions = sp.solve(equation, x)
-                self.result_label.configure(text=", ".join(map(str, solutions)))
+                self.result_label.configure(text=f"x = {', '.join(map(str, solutions))}")
 
             elif self.mode == "Numerical":
                 initial_guess_text = self.initial_guess_entry.get()

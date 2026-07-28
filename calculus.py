@@ -70,7 +70,7 @@ class Calculus(ctk.CTkFrame):
 
         #calculate button
         self.calculate_button = ctk.CTkButton(self, text="Calculate", command=self.calculate)
-        self.calculate_button.pack(padx=20, pady=(10, 20))
+        self.calculate_button.pack(anchor="w", padx=20, pady=(10, 20))
 
         #show result
         self.result_title = ctk.CTkLabel(self, text="Result", font=ctk.CTkFont(size=16, weight="bold"), anchor="w")
