@@ -40,9 +40,17 @@ class FunctionPlot(ctk.CTkFrame):
         self.xmin_entry.insert(0, "-10")
         self.xmax_entry.insert(0, "10")
 
-        #plot button
-        self.plot_button = ctk.CTkButton(self, text="Plot", width=120, command=self.plot_function)
-        self.plot_button.pack(anchor="w", padx=20, pady=(20, 10))
+        #button frame
+        self.button_frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.button_frame.pack(anchor="w", padx=20, pady=(10, 20))
+
+        #calculate button
+        self.calculate_button = ctk.CTkButton(self.button_frame, text="Calculate", width=100, command=self.plot_function)
+        self.calculate_button.pack(side="left")
+
+        #clear button
+        self.clear_button = ctk.CTkButton(self.button_frame, text="Clear", width=80, command=self.clear)
+        self.clear_button.pack(side="left", padx=(10, 0))
 
         #warning label
         self.warning = ctk.CTkLabel(self, text="Invalid Input", font=ctk.CTkFont(size=16))
@@ -111,3 +119,11 @@ class FunctionPlot(ctk.CTkFrame):
         
         except Exception:
             self.warning.pack(fill="x", padx=20)
+
+    def clear(self):
+        self.function_entry.delete(0, "end")
+        self.xmin_entry.delete(0, "end")
+        self.xmax_entry.delete(0, "end")
+        self.warning.configure(text="")
+
+        plt.close()

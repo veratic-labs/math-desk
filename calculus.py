@@ -68,9 +68,17 @@ class Calculus(ctk.CTkFrame):
         self.point_entry = ctk.CTkEntry(self.point_frame, width=100)
         self.point_entry.pack(side="left", padx=(5, 0))
 
+        #button frame
+        self.button_frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.button_frame.pack(anchor="w", padx=20, pady=(10, 20))
+
         #calculate button
-        self.calculate_button = ctk.CTkButton(self, text="Calculate", command=self.calculate)
-        self.calculate_button.pack(anchor="w", padx=20, pady=(10, 20))
+        self.calculate_button = ctk.CTkButton(self.button_frame, text="Calculate", width=100, command=self.calculate)
+        self.calculate_button.pack(side="left")
+
+        #clear button
+        self.clear_button = ctk.CTkButton(self.button_frame, text="Clear", width=80, command=self.clear)
+        self.clear_button.pack(side="left", padx=(10, 0))
 
         #show result
         self.result_title = ctk.CTkLabel(self, text="Result", font=ctk.CTkFont(size=16, weight="bold"), anchor="w")
@@ -132,6 +140,11 @@ class Calculus(ctk.CTkFrame):
         except Exception:
             self.result_label.configure(text="Invalid input")
 
+    def clear(self):
+        self.function_entry.delete(0, "end")
 
+        self.lower_entry.delete(0, "end")
+        self.upper_entry.delete(0, "end")
+        self.point_entry.delete(0, "end")
 
-
+        self.result_label.configure(text="")

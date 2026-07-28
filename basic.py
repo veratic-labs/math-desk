@@ -20,23 +20,31 @@ class BasicCalculator(ctk.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
 
-        #title
+        # Title
         self.title_label = ctk.CTkLabel(self, text="Basic Calculator", font=ctk.CTkFont(size=24, weight="bold"))
         self.title_label.pack(anchor="w", padx=20, pady=(20, 10))
 
-        #input area
+        # Input area
         self.input_box = ctk.CTkEntry(self, placeholder_text="Enter an expression...")
         self.input_box.pack(fill="x", padx=20, pady=(20, 10))
 
-        #calculate button
-        self.calculate_button = ctk.CTkButton(self, text="Calculate", command=self.calculate)
-        self.calculate_button.pack(anchor="w", padx=20, pady=(0, 20))
+        # Button frame
+        self.button_frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.button_frame.pack(anchor="w", padx=20, pady=(0, 20))
 
-        #result title
+        # Calculate button
+        self.calculate_button = ctk.CTkButton(self.button_frame, text="Calculate", command=self.calculate, width=100)
+        self.calculate_button.pack(side="left")
+
+        # Clear button
+        self.clear_button = ctk.CTkButton(self.button_frame, text="Clear", width=80, command=self.clear)
+        self.clear_button.pack(side="left", padx=(10, 0))
+
+        # Result title
         self.result_title = ctk.CTkLabel(self, text="Result", font=ctk.CTkFont(size=16, weight="bold"))
         self.result_title.pack(anchor="w", padx=20, pady=(15, 5))
 
-        #result label
+        # Result label
         self.result_label = ctk.CTkLabel(self, text="", anchor="w")
         self.result_label.pack(fill="x", padx=20)
 
@@ -52,4 +60,8 @@ class BasicCalculator(ctk.CTkFrame):
 
     def evaluate_expression(self, expression):
         return eval(expression, SAFE_GLOBALS, {})
+
+    def clear(self):
+        self.input_box.delete(0, "end")
+        self.result_label.configure(text="")
     

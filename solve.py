@@ -25,10 +25,17 @@ class SolveEquation(ctk.CTkFrame):
         self.initial_guess_label = ctk.CTkLabel(self.numerical_frame, text="Initial Guess")
         self.initial_guess_entry = ctk.CTkEntry(self.numerical_frame, width=150)
 
-        #solve button
-        self.solve_button = ctk.CTkButton(self, text="Solve", command=self.solve_equ)
-        self.solve_button.pack(anchor="w", padx=20, pady=(10, 15))
+        #button frame
+        self.button_frame = ctk.CTkFrame(self, fg_color="transparent")
+        self.button_frame.pack(anchor="w", padx=20, pady=(10, 20))
 
+        #solve button
+        self.calculate_button = ctk.CTkButton(self.button_frame, text="Calculate", width=100, command=self.solve_equ)
+        self.calculate_button.pack(side="left")
+
+        #clear button
+        self.clear_button = ctk.CTkButton(self.button_frame, text="Clear", width=80, command=self.clear)
+        self.clear_button.pack(side="left", padx=(10, 0))
         #result
         self.result_title = ctk.CTkLabel(self, text="Result", font=("Arial", 16, "bold"))
         self.result_title.pack(anchor="w", padx=20, pady=(10, 5))
@@ -88,3 +95,8 @@ class SolveEquation(ctk.CTkFrame):
         except Exception:
             self.result_label.configure(text="Input Invalid")
 
+    def clear(self):
+        self.equation_entry.delete(0, "end")
+        self.initial_guess_entry.delete(0, "end")
+
+        self.result_label.configure(text="")
