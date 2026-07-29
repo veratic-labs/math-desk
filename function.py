@@ -61,50 +61,50 @@ class FunctionPlot(ctk.CTkFrame):
         self.warning = ctk.CTkLabel(self, text="Invalid Input", font=ctk.CTkFont(size=16))
     
     def plot_function(self):
-        self.warning.pack_forget()
-        
-        points_num = 1000
-
-        #enable users to enter special values for x min and max
-        safe_globals = {
-            "__builtins__": {},
-            "sin": np.sin,
-            "cos": np.cos,
-            "tan": np.tan,
-            "pi": np.pi,
-            "e": np.e,
-            "sqrt": np.sqrt,
-            "log": np.log,
-            "log10": np.log10,
-            "exp": np.exp,
-        }
-        
-        #get values
-        function = self.function_entry.get()
-        x_min = eval(self.xmin_entry.get(), safe_globals, {})
-        x_max = eval(self.xmax_entry.get(), safe_globals, {})
-
-        x = np.linspace(x_min, x_max, points_num)
-
-        #safe globals for functions
-        safe_globals = {
-            "__builtins__": {},
-            "x": x,
-            "sin": np.sin,
-            "cos": np.cos,
-            "tan": np.tan,
-            "sqrt": np.sqrt,
-            "log": np.log,
-            "log10": np.log10,
-            "exp": np.exp,
-            "pi": np.pi,
-            "e": np.e,
-            "abs": abs,
-            "round": round,
-        }
-        
-        #draw the graph
         try:
+            self.warning.pack_forget()
+        
+            points_num = 1000
+
+            #enable users to enter special values for x min and max
+            safe_globals = {
+                "__builtins__": {},
+                "sin": np.sin,
+                "cos": np.cos,
+                "tan": np.tan,
+                "pi": np.pi,
+                "e": np.e,
+                "sqrt": np.sqrt,
+                "log": np.log,
+                "log10": np.log10,
+                "exp": np.exp,
+            }
+        
+            #get values
+            function = self.function_entry.get()
+            x_min = eval(self.xmin_entry.get(), safe_globals, {})
+            x_max = eval(self.xmax_entry.get(), safe_globals, {})
+
+            x = np.linspace(x_min, x_max, points_num)
+
+            #safe globals for functions
+            safe_globals = {
+                "__builtins__": {},
+                "x": x,
+                "sin": np.sin,
+                "cos": np.cos,
+                "tan": np.tan,
+                "sqrt": np.sqrt,
+                "log": np.log,
+                "log10": np.log10,
+                "exp": np.exp,
+                "pi": np.pi,
+                "e": np.e,
+                "abs": abs,
+                "round": round,
+            }
+        
+            #draw the graph
             y = eval(function, safe_globals, {})
             plt.plot(x, y)
             
