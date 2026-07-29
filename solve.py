@@ -42,7 +42,7 @@ class SolveEquation(ctk.CTkFrame):
         self.clear_button = ctk.CTkButton(self.button_frame, text="Clear", width=80, command=self.clear)
         self.clear_button.pack(side="left", padx=(10, 0))
         #result
-        self.result_title = ctk.CTkLabel(self, text="Result", font=("Arial", 16, "bold"))
+        self.result_title = ctk.CTkLabel(self, text="Result", font=ctk.CTkFont(size=16, weight="bold"), anchor="w")
         self.result_title.pack(anchor="w", padx=20, pady=(10, 5))
 
         self.result_label = ctk.CTkLabel(self, text="", justify="left", wraplength=300)
