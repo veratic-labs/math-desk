@@ -20,6 +20,7 @@ class MathDesk(ctk.CTk):
 
         #initial window settings
         self.title("MathDesk")
+        self.iconbitmap("icon.ico")
         self.geometry("600x400")
 
         #run all pages
