@@ -1,3 +1,8 @@
+"""
+Copyright (c) Veratic Labs
+Licensed under the Apache License, Version 2.0
+"""
+
 import customtkinter as ctk
 import math
 
